@@ -51,7 +51,7 @@ static const char *colors[][3]      = {
 
 
 /* tagging */
-static const char *tags[] = { "N", "O", "T", "H", "I", "N", "G", "g", "b" };
+static const char *tags[] = { "N", "O", "T", "H", "I", "N", "G", "1", "2" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -65,6 +65,8 @@ static const Rule rules[] = {
         { "v2rayN",   NULL,       NULL,       1 << 6,       0,           -1 },
         { "Spotify",  NULL,       NULL,       1 << 1,       0,           -1 },
         { "Thunar",   NULL,       NULL,       0,            1,           -1 },
+        { "obsidian", NULL,       NULL,       1 << 4,       0,           -1 },
+        { "Focuswriter", NULL,    NULL,       1 << 5,       0,           -1 },
 };
 
 /* layout(s) */
@@ -111,7 +113,7 @@ static const char *poweroffcmd[]  = { "sudo", "systemctl", "poweroff", NULL };
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
-	{ ControlMask,             XK_space, spawn,          {.v = termcmd } },
+	{ ControlMask,                  XK_space,  spawn,           {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
@@ -146,6 +148,7 @@ static const Key keys[] = {
 { MODKEY|ControlMask|ShiftMask, XK_r, spawn, {.v = quitcmd } }, 
  { MODKEY|Mod1Mask,    XK_p,            spawn,         {.v = poweroffcmd } },
 { MODKEY, XK_space, spawn, {.v = (const char*[]){ "/home/ish/layot.sh", NULL } } },
+{ MODKEY|ShiftMask, XK_g, togglegamingmode, {0} },
 };
 
 /* button definitions */

@@ -1,22 +1,40 @@
 #!/bin/bash
 set -e
 
-#cd ~/dwm
-
+mkdir -p ~/Documents
+mkdir -p ~/dwmblocks
 sudo mkdir -p /usr/share/xsessions
-sudo cp dwm.desktop /usr/share/xsessions/
-sudo cp startdwm.sh /usr/share/xsessions/
-sudo chmod +x /usr/share/xsessions/startdwm.sh
-cp autostart.sh ~/ && chmod +x ~/autostart.sh
-cp layot.sh ~/ && chmod +x ~/layot.sh
-cp restart-dwm.sh ~/ && chmod +x ~/restart-dwm.sh
-sudo cp wallhaven-dgo9gg_2560x1440.png ~/Documents/
-cp .Xresources ~/ 
 
-cp -r ~/dwm/dwmblocks ~/dwmblocks
-cd ~/dwmblocks 
-#make clean
-#make
-#sudo make install
+sudo cp -u dwm.desktop /usr/share/xsessions/
+sudo cp -u startdwm.sh /usr/share/xsessions/
+sudo chmod +x /usr/share/xsessions/startdwm.sh
+
+for f in autostart.sh layot.sh restart-dwm.sh; do
+    if [ -f "$f" ]; then
+        cp -u "$f" ~/
+        chmod +x ~/"$f"
+    fi
+done
+
+if [ -f wallhaven-dgo9gg_2560x1440.png ]; then
+    cp -u wallhaven-dgo9gg_2560x1440.png ~/Documents/
+fi
+
+if [ -f .Xresources ]; then
+    cp -u .Xresources ~/
+fi
+
+sudo make clean install
+
+if [ -d ~/dwmblocks ]; then
+    cp -ru ~/dwm/dwmblocks/* ~/dwmblocks/
+else
+    cp -r ~/dwm/dwmblocks ~/dwmblocks
+fi
+
+cd ~/dwmblocks
+make clean
+make
+sudo make install
 
 echo "Done"

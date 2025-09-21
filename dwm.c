@@ -1291,6 +1291,7 @@ propertynotify(XEvent *e)
 void
 quit(const Arg *arg)
 {
+        system("loginctl terminate-session $(loginctl | grep $(whoami) | awk '{print $1}')");
 	running = 0;
 }
 

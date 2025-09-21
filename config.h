@@ -106,8 +106,8 @@ static const char *dmenucmd[] = {
     NULL
 };
 static const char *termcmd[]  = { "ghostty", NULL };
-static const char *flameshot[] = { "flameshot", "gui", NULL };
-static const char *quitcmd[] = { "/home/ish/restart-dwm.sh", NULL };
+static const char *flameshot[] = { "sh", "-c", "QT_SCALE_FACTOR=0.75 flameshot gui", NULL };
+/* static const char *quitcmd[] = { "/home/ish3nn/restart-dwm.sh", NULL }; */
 static const char *poweroffcmd[]  = { "sudo", "systemctl", "poweroff", NULL };
 
 static const Key keys[] = {
@@ -145,9 +145,10 @@ static const Key keys[] = {
 { 0, XF86XK_AudioRaiseVolume, spawn, {.v = upvol   } },
 { 0, XF86XK_AudioMute,        spawn, {.v = mutevol } },
 { MODKEY|ShiftMask,  XK_s,  spawn,  {.v = flameshot} },
-{ MODKEY|ControlMask|ShiftMask, XK_r, spawn, {.v = quitcmd } }, 
+{ MODKEY|ControlMask|ShiftMask, XK_r, quit, {0} },
+/* { MODKEY|ControlMask|ShiftMask, XK_r, spawn, {.v = quitcmd } }, */ 
  { MODKEY|Mod1Mask,    XK_p,            spawn,         {.v = poweroffcmd } },
-{ MODKEY, XK_space, spawn, {.v = (const char*[]){ "/home/ish/layot.sh", NULL } } },
+{ MODKEY, XK_space, spawn, {.v = (const char*[]){ "/home/ish3nn/layot.sh", NULL } } },
 { MODKEY|ShiftMask, XK_g, togglegamingmode, {0} },
 };
 

@@ -1,0 +1,93 @@
+{
+    "security.workspace.trust.untrustedFiles": "open",
+    "editor.fontSize": 18,
+    "files.autoSave": "afterDelay",
+    "editor.fontFamily": "'0xProto Nerd Font Mono', monospace",
+    "debug.onTaskErrors": "abort",
+    "editor.wordWrap": "wordWrapColumn",
+    "git.openRepositoryInParentFolders": "never",
+    "claudeCode.preferredLocation": "panel",
+    "python.languageServer": "Default",
+    "python.locator": "js",
+    "python.useEnvironmentsExtension": false,
+    "http.systemCertificatesNode": true,
+    "workbench.iconTheme": "jetbrains-file-icon-theme-auto",
+
+    /* approve */
+    "explorer.confirmDragAndDrop": true,
+    "explorer.confirmDelete": true,
+
+    /* scroll && effects */
+    "editor.scrollbar.horizontal": "hidden",
+    "editor.scrollbar.vertical": "hidden",
+    "editor.minimap.enabled": false,
+    "editor.stickyScroll.enabled": false,
+    
+    "editor.matchBrackets": "never",
+    "editor.hideCursorInOverviewRuler": true,
+    "editor.overviewRulerBorder": false,
+
+    /* bottom statusbar */
+    "workbench.statusBar.visible": false,
+
+    "workbench.colorCustomizations": {
+        "editorCursor.background": "#000000",
+        "editorOverviewRuler.wordHighlightStrongForeground": "#0000",
+        "editorOverviewRuler.selectionHighlightForeground": "#0000",
+        "editorOverviewRuler.rangeHighlightForeground": "#0000",
+        "editorOverviewRuler.wordHighlightForeground": "#0000",
+        "editorOverviewRuler.bracketMatchForeground": "#0000",
+        "editorOverviewRuler.findMatchForeground": "#0000",
+        "editorOverviewRuler.modifiedForeground": "#0000",
+        "editorOverviewRuler.deletedForeground": "#0000",
+        "editorOverviewRuler.warningForeground": "#ffc609ef",
+        "editorOverviewRuler.addedForeground": "#0000",
+        "editorOverviewRuler.errorForeground": "#ff0000",
+        "editorOverviewRuler.infoForeground": "#0000",
+        "editorOverviewRuler.border": "#0000",
+
+        "terminalCursor.foreground": "#d87757",
+    },
+
+    "breadcrumbs.enabled": false,
+
+    /* tab-space */
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true,
+    "editor.detectIndentation": false,
+
+    "todohighlight.isEnable": true,
+
+    /* cursor */
+    "editor.multiCursorModifier": "alt",
+    "editor.cursorBlinking": "solid",
+
+    "files.insertFinalNewline": true,
+    
+    "workbench.tips.enabled": false,
+
+    "editor.showFoldingControls": "never",
+    "editor.lightbulb.enabled": "off",
+
+    "editor.renderWhitespace": "none",
+    "editor.renderLineHighlight": "line",
+
+    "workbench.tree.renderIndentGuides": "none",
+    "workbench.tree.enableStickyScroll": false,
+
+    "files.autoSaveDelay": 5,
+    
+    "window.zoomLevel": 2,
+    "workbench.colorTheme": "Claude Dark",
+    "markdown-preview-enhanced.enablePreviewZenMode": true,
+    "markdown-preview-enhanced.previewTheme": "monokai.css",
+    "markdown-preview-enhanced.codeBlockTheme": "xonokai.css",
+    "git.autofetch": true,
+    "git.enableSmartCommit": true,
+    "git.confirmSync": false,
+
+    /* MUST HAVE FOR GIT GUI */
+    "git.detectSubmodules": false,
+    "workbench.activityBar.location": "bottom",
+    "terminal.integrated.initialHint": false
+}

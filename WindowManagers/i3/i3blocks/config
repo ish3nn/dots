@@ -1,0 +1,37 @@
+# separator
+separator=true
+separator_block_width=15
+
+[net]
+command=ip route get 1 | awk '{print $7}'
+interval=10
+
+[cpu]
+command=grep 'cpu ' /proc/stat | awk '{usage=($2+$4)*100/($2+$4+$5)} END {print int(usage) "%"}'
+interval=2
+label=CPU:
+
+[temp]
+command=sensors | awk '/Package id 0/ {print $4; exit}'
+interval=3
+color=#ffd6a5
+
+[gpu]
+command=printf "%s°C\n" "$(nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader)"
+interval=3
+label=GPU:
+color=#c8facc
+
+[mem]
+command=free -h | awk '/Mem:/ {print $3 "/" $2}'
+interval=5
+label=RAM:
+
+[disk]
+command=df -h / | awk 'NR==2 {print $4}'
+interval=30
+label=SSD:
+
+[time]
+command=date '+%H:%M:%S %d.%m.%Y'
+interval=1

@@ -1,40 +1,127 @@
 #!/bin/bash
+
 set -e
 
-mkdir -p ~/Documents
-mkdir -p ~/dwmblocks
-sudo mkdir -p /usr/share/xsessions
+echo "=== Select window manager ==="
+echo "XORG        WAYLAND"
+echo "1) i3       3) hyprland"
+echo "2) dwm"
+echo
+read -p "Choice: " choice
 
-sudo cp -u dwm.desktop /usr/share/xsessions/
-sudo cp -u startdwm.sh /usr/share/xsessions/
-sudo chmod +x /usr/share/xsessions/startdwm.sh
+case $choice in
+    1)
+        WM="i3"
+        ;;
+    2)
+        WM="dwm"
+        ;;
+    3)
+        WM="hypr"
+        ;;
+    *)
+        echo "=== Invalid selection ==="
+        exit 1
+        ;;
+esac
 
-for f in autostart.sh layot.sh restart-dwm.sh; do
-    if [ -f "$f" ]; then
-        cp -u "$f" ~/
-        chmod +x ~/"$f"
-    fi
-done
+echo "=== Selected: $WM ==="
 
-if [ -f wallhaven-dgo9gg_2560x1440.png ]; then
-    cp -u wallhaven-dgo9gg_2560x1440.png ~/Documents/
+if [ "$WM" = "dwm" ] || [ "$WM" = "hypr" ]; then
+    echo "=== Warning: $WM is not fully supported ==="
+    sleep 2
 fi
 
-if [ -f .Xresources ]; then
-    cp -u .Xresources ~/
+echo
+read -p "Install wallpapers? (y/n): " INSTALL_WALLPAPER
+read -p "Install app configs? (y/n): " INSTALL_APPS
+
+echo "=== Updating system ==="
+sudo pacman -Syu --noconfirm
+
+if [ "$WM" = "i3" ]; then
+    echo "=== Installing i3 environment ==="
+
+    sudo pacman -S --noconfirm \
+        xorg xorg-xinit xorg-xrandr xorg-xsetroot \
+        i3-wm i3blocks i3lock i3status \
+        kitty nautilus dmenu \
+        feh dunst \
+        maim xclip \
+        xss-lock \
+        network-manager-applet \
+        dex \
+        gnome-keyring \
+        polkit-gnome \
+        ttf-dejavu \
+        ttf-liberation
 fi
 
-sudo make clean install
+if [ "$WM" = "hypr" ]; then
+    echo "=== Installing hyprland ==="
 
-if [ -d ~/dwmblocks ]; then
-    cp -ru ~/dwm/dwmblocks/* ~/dwmblocks/
-else
-    cp -r ~/dwm/dwmblocks ~/dwmblocks
+    sudo pacman -S --noconfirm \
+        hyprland \
+        kitty \
+        dunst \
+        wl-clipboard \
+        xdg-desktop-portal-hyprland \
+        polkit-gnome \
+        ttf-dejavu \
+        ttf-liberation
 fi
 
-cd ~/dwmblocks
-make clean
-make
-sudo make install
+if [ "$WM" = "dwm" ]; then
+    echo "=== Installing dwm ==="
 
-echo "Done"
+    sudo pacman -S --noconfirm \
+        xorg xorg-xinit \
+        libx11 libxft libxinerama \
+        freetype2 \
+        ttf-dejavu \
+        ttf-liberation \
+        kitty
+
+    cd WindowManagers/dwm/dwm
+    sudo make clean install
+
+    cd ../dwmblocks
+    make
+    sudo cp dwmblocks /usr/local/bin/
+
+    cd ../../..
+fi
+
+echo "=== Installing config ==="
+
+mkdir -p "$HOME/.config"
+
+if [ "$WM" = "i3" ]; then
+    cp -r WindowManagers/i3/i3 "$HOME/.config/"
+    cp -r WindowManagers/i3/i3blocks "$HOME/.config/"
+fi
+
+if [ "$WM" = "hypr" ]; then
+    mkdir -p "$HOME/.config/hypr"
+    cp -r WindowManagers/hypr/* "$HOME/.config/hypr/"
+fi
+
+if [ "$WM" = "dwm" ]; then
+    cp -r WindowManagers/dwm "$HOME/.config/"
+fi
+
+if [ "$INSTALL_WALLPAPER" = "y" ]; then
+    echo "=== Installing wallpapers ==="
+    mkdir -p "$HOME/Pictures"
+    cp -r Wallpaper/* "$HOME/Pictures/"
+fi
+
+if [ "$INSTALL_APPS" = "y" ]; then
+    echo "=== Installing app configs ==="
+
+    mkdir -p "$HOME/.config/VSCodium/User"
+    cp Apps/vscodium/settings.json "$HOME/.config/VSCodium/User/" 2>/dev/null || true
+fi
+
+echo "=== Done ==="
+echo "Reboot required"

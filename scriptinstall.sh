@@ -62,11 +62,15 @@ if [ "$WM" = "hypr" ]; then
 
     sudo pacman -S --noconfirm \
         hyprland \
+        waybar \
+        swaync \
+        swww \
         kitty \
         dunst \
         wl-clipboard \
         xdg-desktop-portal-hyprland \
         polkit-gnome \
+        network-manager-applet \
         ttf-dejavu \
         ttf-liberation
 fi
@@ -102,8 +106,10 @@ if [ "$WM" = "i3" ]; then
 fi
 
 if [ "$WM" = "hypr" ]; then
-    mkdir -p "$HOME/.config/hypr"
-    cp -r WindowManagers/hypr/* "$HOME/.config/hypr/"
+    echo "=== Installing Hyprland config ==="
+
+    cp -r WindowManagers/hypr/hypr "$HOME/.config/"
+    cp -r WindowManagers/hypr/waybar "$HOME/.config/"
 fi
 
 if [ "$WM" = "dwm" ]; then

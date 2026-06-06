@@ -1,0 +1,42 @@
+{
+    "layer": "top",
+    "position": "bottom",
+
+    "modules-left": [
+        "hyprland/workspaces"
+    ],
+
+    "modules-center": [
+        "clock"        
+    ],
+
+    "modules-right": [
+        "tray"
+    ],
+
+    "clock": {
+        "interval": 1,
+        "format": "{:%A, %d %B %H:%M:%S}",
+        "tooltip": false
+    },
+
+    "hyprland/workspaces": {
+        "format": "{name}",
+        "format-icons": {
+            "1": "",
+            "2": "",
+            "3": "",
+            "4": "",
+            "5": "",
+            "active": "",
+            "default": ""
+        }
+    },
+
+    "tray": {
+        "icon-size": 30,
+        "spacing": 10
+    }
+
+}
+

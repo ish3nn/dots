@@ -60,6 +60,16 @@ fi
 if [ "$WM" = "hypr" ]; then
     echo "=== Installing hyprland ==="
 
+    read -p "Remove existing Hyprland configs (hypr/waybar/swaync)? (y/n): " REMOVE_HYPR_CONFIGS
+
+    if [ "$REMOVE_HYPR_CONFIGS" = "y" ]; then
+        echo "=== Removing old configs ==="
+
+        rm -rf "$HOME/.config/hypr"
+        rm -rf "$HOME/.config/waybar"
+        rm -rf "$HOME/.config/swaync"
+    fi
+
     sudo pacman -S --noconfirm \
         hyprland \
         waybar \

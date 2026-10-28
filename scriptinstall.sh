@@ -75,7 +75,7 @@ if [ "$WM" = "hypr" ]; then
         hyprland \
         waybar \
         swaync \
-        swww \
+        awww \
         rofi \
         kitty \
         dunst \

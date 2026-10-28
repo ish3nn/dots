@@ -1,3 +1,4 @@
+
 {
     "layer": "top",
     "position": "bottom",
@@ -7,10 +8,14 @@
     ],
 
     "modules-center": [
-        "clock"        
+        "clock"
     ],
 
     "modules-right": [
+        "battery",
+        "network",
+        "pulseaudio",
+        "bluetooth",
         "tray"
     ],
 
@@ -33,10 +38,115 @@
         }
     },
 
+    "battery": {
+        "interval": 10,
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": "{icon} {capacity}%",
+        "format-full": "{icon} {capacity}%",
+        "format-icons": {
+            "default": [
+                "󰁺",
+                "󰁻",
+                "󰁼",
+                "󰁽",
+                "󰁾",
+                "󰁿",
+                "󰂀",
+                "󰂁",
+                "󰂂",
+                "󰁹"
+            ],
+            "charging": [
+                "󰢜",
+                "󰂆",
+                "󰂇",
+                "󰂈",
+                "󰢝",
+                "󰂉",
+                "󰢞",
+                "󰂊",
+                "󰂋",
+                "󰂅"
+            ]
+        },
+        "tooltip": true,
+        "tooltip-format": "{timeTo}\nЗаряд: {capacity}%"
+    },
+
+    "network": {
+        "format-wifi": "{icon} {essid}",
+        "format-ethernet": "󰈀 {ipaddr}",
+        "format-linked": "󰈀 {ifname}",
+        "format-disconnected": "󰤭 Wi-Fi",
+        "format-disabled": "󰤭 Off",
+
+        "format-icons": [
+            "󰤯",
+            "󰤟",
+            "󰤢",
+            "󰤥",
+            "󰤨"
+        ],
+
+        "tooltip-format-wifi": "Сеть: {essid}\nСигнал: {signalStrength}%\nIP: {ipaddr}",
+        "tooltip-format-ethernet": "Интерфейс: {ifname}\nIP: {ipaddr}",
+        "tooltip-format-disconnected": "Нет подключения",
+        "tooltip-format-disabled": "Wi-Fi отключён",
+
+        "on-click": "kitty --title Wi-Fi -e nmtui-connect",
+        "on-click-right": "kitty --title NetworkManager -e nmtui",
+
+        "interval": 5
+    },
+
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-bluetooth": " {volume}%",
+        "format-muted": "󰝟 muted",
+
+        "format-icons": {
+            "headphone": "",
+            "headset": "",
+            "hands-free": "",
+            "default": [
+                "",
+                ""
+            ]
+        },
+
+        "scroll-step": 5,
+        "max-volume": 100,
+        "on-click": "pavucontrol",
+        "tooltip": true,
+        "tooltip-format": "{desc}: {volume}%"
+    },
+
+    "bluetooth": {
+        "format": "",
+        "format-disabled": "",
+        "format-off": "",
+        "format-on": "",
+        "format-connected": " {num_connections}",
+        "format-connected-battery": " {device_battery_percentage}%",
+
+        "tooltip": true,
+        "tooltip-format": "{controller_alias}",
+        "tooltip-format-off": "Bluetooth выключен",
+        "tooltip-format-disabled": "Bluetooth отключён",
+        "tooltip-format-on": "Bluetooth включён, устройств нет",
+        "tooltip-format-connected": "{controller_alias}\nПодключено устройств: {num_connections}\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}",
+
+        "on-click": "blueman-manager",
+        "on-click-right": "pavucontrol"
+    },
+
     "tray": {
         "icon-size": 30,
         "spacing": 10
     }
-
 }
-

@@ -14,22 +14,11 @@
     7 -> flipped + 270 degrees
 ]]
 
-local monitor_1 = "DP-2"
-local monitor_2 = "HDMI-A-1"
-
 hl.monitor({
-    output   = monitor_1,
-    mode     = "2560x1440@165.00",
-    position = "0x0",
+    output   = "",
+    mode     = "highres",
+    position = "auto",
     scale    = 1
-})
-
-hl.monitor({
-    output    = monitor_2,
-    mode      = "1600x900@60.00",
-    position  = "2560x0",
-    scale     = 1,
-    transform = 1
 })
 
 --------------------

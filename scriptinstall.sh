@@ -68,24 +68,25 @@ if [ "$WM" = "hypr" ]; then
         rm -rf "$HOME/.config/hypr"
         rm -rf "$HOME/.config/waybar"
         rm -rf "$HOME/.config/swaync"
+        rm -rf "$HOME/.config/rofi"
     fi
 
-	sudo pacman -S --noconfirm \
-	    hyprland \
-	    waybar \
-	    swaync \
-	    swww \
-	    rofi \
-	    kitty \
-	    dunst \
-	    wl-clipboard \
-	    xdg-desktop-portal-hyprland \
-	    polkit-gnome \
-	    network-manager-applet \
-	    ttf-dejavu \
-	    ttf-liberation \ 
-	    ttf-iosevka-nerd \
-	    hyprshot
+    sudo pacman -S --noconfirm \
+        hyprland \
+        waybar \
+        swaync \
+        swww \
+        rofi \
+        kitty \
+        dunst \
+        wl-clipboard \
+        xdg-desktop-portal-hyprland \
+        polkit-gnome \
+        network-manager-applet \
+        ttf-dejavu \
+        ttf-liberation \
+        ttf-iosevka-nerd \
+        hyprshot
 fi
 
 if [ "$WM" = "dwm" ]; then

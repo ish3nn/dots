@@ -133,8 +133,8 @@ fi
 
 if [ "$INSTALL_WALLPAPER" = "y" ]; then
     echo "=== Installing wallpapers ==="
-    mkdir -p "$HOME/Pictures"
-    cp -r Wallpaper/* "$HOME/Pictures/"
+    mkdir -p "$HOME/Pictures/Wallpapers"
+    cp -r Wallpaper/* "$HOME/Pictures/Wallpapers"
 fi
 
 if [ "$INSTALL_APPS" = "y" ]; then

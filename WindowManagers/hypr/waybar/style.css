@@ -1,3 +1,4 @@
+
 @import "colors/gruvbox-material.css";
 
 * {
@@ -11,6 +12,8 @@ window#waybar {
     border-radius: 0;
 }
 
+/* Workspaces */
+
 #workspaces {
     min-width: 100px;
     font-size: 0.4rem;
@@ -22,7 +25,7 @@ window#waybar {
 #workspaces button {
     background-color: @bg4;
     color: transparent;
-    padding: 0px 5px;
+    padding: 0 5px;
     border-radius: 99px;
     margin: 0 2px;
     min-width: 4px;
@@ -34,8 +37,86 @@ window#waybar {
     transition: none;
 }
 
+/* Clock */
+
 #clock {
     margin: 0 15px;
     font-weight: 700;
     font-size: 1.12rem;
+}
+
+/* Battery */
+
+#battery {
+    padding: 0 10px;
+    margin: 0 4px;
+    font-size: 1.12rem;
+}
+
+#battery.warning {
+    color: @yellow;
+}
+
+#battery.critical {
+    color: @red;
+}
+
+#battery.charging,
+#battery.full,
+#battery.plugged {
+    color: @green;
+}
+
+/* Network */
+
+#network {
+    padding: 0 10px;
+    margin: 0 4px;
+    font-size: 1.12rem;
+}
+
+#network.wifi {
+    color: @blue;
+}
+
+#network.ethernet {
+    color: @fg;
+}
+
+#network.disconnected,
+#network.disabled {
+    color: @fg;
+}
+
+/* Audio */
+
+#pulseaudio {
+    padding: 0 10px;
+    margin: 0 4px;
+    font-size: 1.12rem;
+}
+
+#pulseaudio.bluetooth {
+    color: @blue;
+}
+
+#pulseaudio.muted {
+    color: @fg;
+}
+
+/* Bluetooth */
+
+#bluetooth {
+    padding: 0 10px;
+    margin: 0 4px;
+    font-size: 1.12rem;
+}
+
+#bluetooth.connected {
+    color: @blue;
+}
+
+#bluetooth.off,
+#bluetooth.disabled {
+    color: @fg;
 }

@@ -25,17 +25,11 @@ hl.monitor({
 ---- WORKSPACES ----
 --------------------
 
--- workspaces 1-5 -> monitor 1
+-- workspaces 1-5
 for i = 1, 5 do
     hl.workspace_rule({
         workspace  = tostring(i),
+        monitor    = "current",
         persistent = true
-    })
-end
-
--- workspaces 6-10 -> monitor 2
-for i = 6, 10 do
-    hl.workspace_rule({
-        workspace = tostring(i)
     })
 end

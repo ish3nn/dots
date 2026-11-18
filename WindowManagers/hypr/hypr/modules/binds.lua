@@ -204,10 +204,7 @@ hl.bind(mainMod .. " + SHIFT + G", hl.dsp.group.prev())
 -- SYSTEM
 ----------------
 
-hl.bind(
-    mainMod .. " + SHIFT + C",
-    hl.dsp.exec_cmd("hyprctl reload")
-)
+hl.bind( mainMod .. " + SHIFT + R", hl.dsp.exec_cmd("hyprctl reload"))
 
 hl.bind(
     mainMod .. " + SHIFT + E",

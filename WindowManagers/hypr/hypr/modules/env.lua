@@ -18,3 +18,15 @@ require("modules.nvidia_env")
 
 --Screenshots
 hl.env("HYPRSHOT_DIR", os.getenv("HOME") .. "/Pictures/Screenshots")
+
+
+-- V2rayn
+hl.env("http_proxy", "http://127.0.0.1:10808")
+hl.env("https_proxy", "http://127.0.0.1:10808")
+hl.env("all_proxy", "socks5h://127.0.0.1:10808")
+hl.env("no_proxy", "localhost,127.0.0.1,::1")
+
+hl.env("HTTP_PROXY", "http://127.0.0.1:10808")
+hl.env("HTTPS_PROXY", "http://127.0.0.1:10808")
+hl.env("ALL_PROXY", "socks5h://127.0.0.1:10808")
+hl.env("NO_PROXY", "localhost,127.0.0.1,::1")
